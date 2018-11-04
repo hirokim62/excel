@@ -1,0 +1,39 @@
+Sub 画像貼り付け()
+Dim lngTop   As Long
+Dim IngLeft  As Long
+Dim i        As Integer
+Dim MyDir    As String
+Dim FileName As String
+Dim Filepath As String
+
+'基本的に値は適当なので試験しながら決めること
+
+    lngTop = 20
+    MyDir  = ActiveWorkbook.Path & "\images"
+
+    'これでファイル名取得できるかわからん
+    For Each FileName In Range("D2:D10")
+
+        FilePath = MyDir & "\" & FileName
+
+        If  i Mod 2 = 0 Then
+            IngLeft = 400
+        Else
+            IngLeft = 20
+        End IF
+
+        ActiveSheet.Shapes.AddPicture
+                Filename:=FileName,
+                LinkToFile:=False,
+                SaveWithDocument:=True,
+                Left:=IngLeft,
+                Top:=lngTop,
+                Width:=300,
+                Height:=200
+
+        lngTop = lngTop + 200 + 20
+        i      = i + 1
+    
+    Next
+ 
+End Sub
